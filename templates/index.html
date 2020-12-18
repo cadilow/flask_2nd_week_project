@@ -1,0 +1,42 @@
+{% extends "base.html" %} 
+{% block wrapper %}
+<main class="container mt-3">
+  <!-- HERO -->
+  <section
+    class="jumbotron text-center mt-4"
+    style="
+      background: url('https://i.ibb.co/y0KJQtf/bg1.jpg');
+      background-position: center center;
+    "
+  >
+    <h1 class="display-4">Всякие туры</h1>
+    <p class="lead">{{ subtitle }}</p>
+    <p class="mt-5 w-50 mx-auto">{{ description }}</p>
+  </section>
+  <!-- CARDS -->
+  <div class="row mt-5">
+    {% for i in range(6) %}
+    <div class="col-4">
+      <div class="card mb-4">
+        <div class="embed-responsive embed-responsive-16by9">
+          <img
+            class="card-img-top embed-responsive-item"
+            src="{{ tours[random_card[i]]['picture'] }}"
+            alt=""
+          />
+        </div>
+        <div class="card-body">
+          <h2 class="h5 card-title">{{ tours[random_card[i]]['title'] }}</h2>
+          <p class="card-text">
+            {{ tours[random_card[i]]['description']|truncate(100) }}
+          </p>
+          <a href="/tours/{{ random_card[i] }}/" class="btn btn-sm btn-primary"
+            >Подробнее</a
+          >
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</main>
+{% endblock %}
