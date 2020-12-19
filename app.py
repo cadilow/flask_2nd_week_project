@@ -14,12 +14,12 @@ def index():
     shuffle(random_card)                        # generator of tours for index.html
     output = render_template(
         "index.html",
-        title_main = title,
-        subtitle = subtitle,
-        description = description,
-        departures = departures,
-        tours = tours,
-        random_card = random_card
+        title_main=title,
+        subtitle=subtitle,
+        description=description,
+        departures=departures,
+        tours=tours,
+        random_card=random_card
         )
     return output
 
@@ -45,15 +45,15 @@ def flights(departure):
         name_tour = "тура"
     output = render_template(
         "departure.html",
-        title_main = title,
-        departures = departures,
-        departure = departure,
-        count_departures = count_departures,
-        name_tour = name_tour,
-        price_dictionary = price_dictionary,
-        count_nights = count_nights,
-        numbers_of_toures = numbers_of_toures,
-        tours = tours
+        title_main=title,
+        departures=departures,
+        departure=departure,
+        count_departures=count_departures,
+        name_tour=name_tour,
+        price_dictionary=price_dictionary,
+        count_nights=count_nights,
+        numbers_of_toures=numbers_of_toures,
+        tours=tours
         )
     return output
 
@@ -62,9 +62,9 @@ def flights(departure):
 def travel(id):
     output = render_template(
         "tour.html",
-        title_main = title,
-        departures = departures,
-        tour = tours[int(id)],
+        title_main=title,
+        departures=departures,
+        tour=tours[int(id)],
         )
     return output
 
