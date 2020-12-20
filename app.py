@@ -26,6 +26,9 @@ def index():
 
 @app.route("/departures/<departure>/")
 def flights(departure):
+    if departure not in departures:
+        return """<h1>Мы организовываем туры только в пределах планеты.<br />
+        Можем предложить путешествие к центру земли.</h1>"""
     count_departures = 0                        # count of tours in one direction
     numbers_of_toures = []                      # keys of dictionary "tours"
     count_nights = []                           # count of nights in each tour
@@ -60,6 +63,8 @@ def flights(departure):
 
 @app.route("/tours/<id>/")
 def travel(id):
+    if int(id) not in tours:
+        return "<h1>По данному направлению пока что туров нет</h1>"
     output = render_template(
         "tour.html",
         title_main=title,
@@ -67,6 +72,12 @@ def travel(id):
         tour=tours[int(id)],
         )
     return output
+
+
+@app.errorhandler(404)
+def render_not_found(error):
+    return """<p style="font-size: 150px">404</p>
+    <h1>Ничего не нашлось! Вот неудача, отправляйтесь на <a href='/'>главную</a>!</h1>"""
 
 
 if __name__ == "__main__":
